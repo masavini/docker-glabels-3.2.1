@@ -1,0 +1,74 @@
+#! /usr/bin/env bash
+
+read -r PROG_PATH < <(
+    readlink -f "${0}"
+)
+
+read -r PROG_DIR < <(
+    cd "${PROG_PATH%/*}" && pwd
+)
+
+CONFIG_DIR="${PROG_DIR}/config"
+
+CONTAINER_NAME='glabels-3.2.1'
+
+# is not running?
+if [[ -z "$(docker ps -q -f name="${CONTAINER_NAME}")" ]]; then
+
+    # exists?
+    if [[ -n "$(docker ps -a -q -f name="${CONTAINER_NAME}")" ]]; then
+        docker start "${CONTAINER_NAME}"
+    else
+
+        run_opts=(
+            --detach
+            --name "${CONTAINER_NAME}"
+            --net host
+            --volume "$HOME:$HOME"
+            --volume "${CONFIG_DIR}:$HOME/.glabels"
+
+            # dbus
+            --env "DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS"
+            --volume "/run/user/$(id -u "$USER"):/run/user/$(id -u "$USER")"
+            --volume '/run/dbus/system_bus_socket:/run/dbus/system_bus_socket'
+            --security-opt apparmor:unconfined
+            
+            # display
+            --env DISPLAY
+            --volume /tmp:/tmp
+
+            # fonts
+            --volume /etc/fonts:/etc/fonts:ro
+            --volume /usr/share/fonts:/usr/share/fonts:ro
+            --volume /usr/local/share/fonts:/usr/local/share/fonts:ro
+            # Fontconfig error: Cannot load default config file
+            --env FONTCONFIG_PATH=/etc/fonts
+
+            # locale settings
+            --env "LANG=it_IT.utf8" #$LANG"
+            --env "LANGUAGE=it_IT:it" #$LANGUAGE"
+            --env "LC_ALL=it_IT.utf8" #$LC_ALL"
+
+            # localtime
+            --volume /etc/localtime:/etc/localtime:ro
+
+            # shm
+            --ipc host  # solves: 'WARNING: fallocate failed to set shm size: No space lefton device'
+            
+            # icons and mouse cursor themes
+            --volume /usr/share/icons:/usr/share/icons:ro
+
+            # xdg
+            --env "XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR"
+        )
+
+        docker run \
+            "${run_opts[@]}" \
+            masavini/glabels:3.2.1-amd64
+    fi
+
+fi
+
+docker exec \
+    "${CONTAINER_NAME}" \
+    glabels-3-batch "$@"

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<Glabels-templates xmlns="http://snaught.com/glabels/2.2/">
+  <Template brand="CE_label" part="W80-8-5" size="A4" description="CE_label (8 x sheet)">
+    <Meta category="user-defined"/>
+    <Label-rectangle id="0" width="105mm" height="74.25mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="0mm"/>
+      <Layout nx="2" ny="4" x0="0mm" y0="0mm" dx="105mm" dy="74.25mm"/>
+    </Label-rectangle>
+  </Template>
+</Glabels-templates>

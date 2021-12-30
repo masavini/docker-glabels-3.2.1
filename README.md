@@ -1,1 +1,0 @@
-# docker-glabels-3.2.1

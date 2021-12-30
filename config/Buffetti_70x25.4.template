@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<Glabels-templates xmlns="http://snaught.com/glabels/2.2/">
+  <Template brand="Buffetti" part="70x25.4" size="A4" description="70x25.4">
+    <Meta category="user-defined"/>
+    <Label-rectangle id="0" width="2.75591in" height="1in" round="0in" x_waste="0in" y_waste="0in">
+      <Markup-margin size="0.125984in"/>
+      <Layout nx="3" ny="11" x0="0in" y0="0.354331in" dx="2.75591in" dy="1in"/>
+    </Label-rectangle>
+  </Template>
+</Glabels-templates>

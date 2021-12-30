@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<Glabels-templates xmlns="http://snaught.com/glabels/2.2/">
+  <Template brand="DK" part="11208" size="Other" width="38mm" height="90mm" description="38mm x 90mm">
+    <Meta category="user-defined"/>
+    <Label-rectangle id="0" width="38mm" height="90mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3.175mm"/>
+      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="0mm" dy="0mm"/>
+    </Label-rectangle>
+  </Template>
+</Glabels-templates>

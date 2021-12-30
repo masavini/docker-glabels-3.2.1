@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<Glabels-templates xmlns="http://snaught.com/glabels/2.2/">
+  <Template brand="Poste Italiane" part="04010A" size="Other" width="107.95mm" height="139.7mm" description="Raccomandata">
+    <Meta category="user-defined"/>
+    <Label-rectangle id="0" width="107.95mm" height="139.7mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="0mm"/>
+      <Layout nx="1" ny="1" x0="0mm" y0="0mm" dx="107.95mm" dy="139.7mm"/>
+    </Label-rectangle>
+  </Template>
+</Glabels-templates>
