@@ -45,9 +45,9 @@ if [[ -z "$(docker ps -q -f name="${CONTAINER_NAME}")" ]]; then
             --env FONTCONFIG_PATH=/etc/fonts
 
             # locale settings
-            --env "LANG=it_IT.utf8" #$LANG"
-            --env "LANGUAGE=it_IT:it" #$LANGUAGE"
-            --env "LC_ALL=it_IT.utf8" #$LC_ALL"
+            --env "LANG=$LANG"
+            --env "LANGUAGE=$LANGUAGE"
+            --env "LC_ALL=$LC_ALL"
 
             # localtime
             --volume /etc/localtime:/etc/localtime:ro
